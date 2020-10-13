@@ -1,0 +1,57 @@
+<!doctype html>
+
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+
+<head>
+	<title>CS527 Project 1</title>
+</head>
+<script>
+  function showImage(){
+          document.getElementById('abcImage').style.display= document.getElementById('abcImage').style.display == 'none'? 'block' : 'none';
+      }
+  function showImage2(){
+          document.getElementById('instacartImage').style.display= document.getElementById('instacartImage').style.display == 'none'? 'block' : 'none';
+      }
+</script>
+  
+
+<body>
+  <div>
+    <form method="post">
+      {% if request.form['db_choice']=='Redshift' %}
+      	<input type="radio" id="db_choice" name="db_choice" value="MySQL"> MySQL
+      	<input type="radio" id="db_choice" name="db_choice" value="Redshift" checked > Redshift
+      {% else %}
+	<input type="radio" id="db_choice" name="db_choice" value="MySQL" checked> MySQL
+	<input type="radio" id="db_choice" name="db_choice" value="Redshift" > Redshift
+      {% endif %}
+      <div class="left">
+        <label for="sql">Enter a SQL statment:{% if error %}<span style="color:red">{{ error }}</span>{% endif %}</label>
+      </div>
+      
+  <div class="left">
+    <input id="text" type="button" value="ABC diagram" onclick="showImage();"/>
+    <input id="text" type="button" value="Instacart diagram" onclick="showImage2();"/>
+    <img id="abcImage" src="{{url_for('static', filename='abc.png')}}", style="display: none"/>
+    <img id="instacartImage" src="{{url_for('static', filename='instacart.png')}}", style="display: none"/>
+  </div>
+
+      </div>
+
+      <textarea name="sql" id="sql" required/>{{ request.form['sql'] }}</textarea>
+
+      <div class="left">
+
+  <input type="submit" value="Run" name="submit"><span style="float:right">Time Elapsed:{{ elapsed }}</span>
+
+    </form>
+
+
+    <div class="output">
+	{% for table in tables %}
+		{{table|safe}}
+	{% endfor %}
+    </div>
+  </div>
+</body>

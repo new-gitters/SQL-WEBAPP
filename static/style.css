@@ -1,0 +1,36 @@
+html { font-family: sans-serif; background: #eee; padding: 1rem; }
+body { max-width: 60%; margin: 0 auto; background: white; padding: 1rem; }
+div { text-align: center; }
+div.left { text-align: left; }
+div.right { text-align: right; }
+textarea {
+  width: 99%;
+  height: calc(40vh - 20px);
+  resize: none;
+}
+table {
+  border-collapse: collapse;
+  width: 100%;
+  display: inline-table;
+}
+table td, table th { border: 1px solid black; padding: 8px; }
+table tr:hover { background-color: #ddd; }
+table th { padding-top: 12px; padding-bottom: 12px; text-align: center;}
+div.output { 
+  height: calc(40vh - 20px);
+  background-color:#f1f1f1;
+  padding:0.1em;
+  margin: 1rem 0 0 0;
+  overflow:auto;
+}
+input[type=submit] {
+  width: 10em;
+}
+input[type=submit]:hover {
+  background-color: #98FB98;
+  
+}
+img {
+  max-width:50%;
+  height:auto;
+}
